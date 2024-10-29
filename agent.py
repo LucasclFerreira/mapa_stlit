@@ -117,9 +117,10 @@ def retrieve_climate_report_documents(query: str):
     query -- user's question to be answered
     """
 
-    inputs = {"question": query, "iteration": 0}
+    inputs = {"question": query}
 
-    response = retrieval_agent.pick('generation').invoke(inputs, {"recursion_limit": 3})
+    response = retrieval_agent.pick('generation').invoke(inputs, {"recursion_limit": 5})
+    print(f"RAG:\n\t{response}\n\n")
     return response
 
 tools = [retrieve_climate_report_documents, get_insurance_policies_data, get_natural_disasters_data]
@@ -137,9 +138,9 @@ def reasoner(state: State):
 
     You can not answer questions out of the topics: climate, weather, and insurance.
     
-    Use five sentences maximum and keep the answer concise. 
+    Use five sentences maximum and keep the answer concise.
 
-    When using retrieved information, cite all the sources used with the title and page of the documents used in the answer. 
+    When using retrieved information, always cite all the sources with the title and page of the documents used in the answer. 
 
     Everytime you use a tool to get data (about insurance or natural disasters), retrieve climate report documents to complement the answer.
     """
