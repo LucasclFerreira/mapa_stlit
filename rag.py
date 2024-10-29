@@ -55,6 +55,7 @@ def retrieve(state):
     """
 
     question = state["question"]
+    print(f"Query from the reasoner: {question}")
 
     embedding = OpenAIEmbeddings(model='text-embedding-3-small')
 

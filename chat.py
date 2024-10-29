@@ -20,7 +20,7 @@ if "chat_history" not in st.session_state:
     st.session_state.chat_history = [{"role": "ai", "content": initial_message}]
 
 if "agent_memory" not in st.session_state:
-    st.session_state.agent_memory = {"configurable": {"thread_id": "124940"}}
+    st.session_state.agent_memory = {"configurable": {"thread_id": "124940"}, "recursion_limit": 10}
 
 
 # Functions
@@ -34,7 +34,11 @@ def generate_stream_from_response(response):
         yield letter
 
 def get_response(user_input):
-    return agent.invoke({"messages": [("human", user_input)]}, config=st.session_state.agent_memory)
+    try:
+        response = agent.invoke({"messages": [("human", user_input)]}, config=st.session_state.agent_memory)
+    except BaseException as _e:
+        response = "Uh oh.. Houve um erro. Tente novamente mais tarde."
+    return response
 
 
 agent = instantiate_agent()
