@@ -4,3 +4,15 @@ pandas
 numpy
 plotly==5.18.0
 pyarrow
+
+tabulate
+langchain-core
+langchain-community
+langchain-openai
+langchain-experimental
+langchain-pinecone
+pinecone[grpc]
+langchain
+langgraph
+streamlit
+pandas
