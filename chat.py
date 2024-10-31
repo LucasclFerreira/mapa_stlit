@@ -29,7 +29,7 @@ def instantiate_agent():
     return create_workflow()
 
 def generate_stream_from_response(response):
-    for letter in response:
+    for letter in response.replace("$", "\$"):
         sleep(0.01)
         yield letter
 
