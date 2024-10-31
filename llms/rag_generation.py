@@ -16,7 +16,7 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 
 # LLM
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.01)
 
 
 # Post-processing

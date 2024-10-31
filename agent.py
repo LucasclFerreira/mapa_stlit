@@ -14,7 +14,7 @@ from rag import create_workflow
 
 
 OPENAI_API_KEY=st.secrets['OPENAI_API_KEY']
-llm = ChatOpenAI(model='gpt-4o-mini', temperature=0)
+llm = ChatOpenAI(model='gpt-4o-mini', temperature=0.05)
 
 now = datetime.now()
 
